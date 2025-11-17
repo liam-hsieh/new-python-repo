@@ -81,7 +81,7 @@ src/
 └── demo_app.py               # Uses package import
 ```
 
-**⚙️ pyproject.toml Configuration:**
+**Configuration in pyproject.toml:**
 ```toml
 [tool.hatch.build.targets.wheel]
 packages = ["src/libs"]  # Include entire libs package
@@ -116,12 +116,12 @@ packages = ["src/demo_sub_app/example_module2.py"]  # Include specific file
 
 | Scenario | Use Demo 1 (Package) | Use Demo 2 (Direct) |
 |----------|---------------------|----------------------|
-| **Multiple related modules** | ✅ | ❌ |
-| **Single utility module** | ❌ | ✅ |
-| **Plan to distribute as package** | ✅ | ❌ |
-| **Quick prototype/script** | ❌ | ✅ |
-| **Complex project structure** | ✅ | ❌ |
-| **Simple directory structure** | ❌ | ✅ |
+| **Multiple related modules** | Yes | No |
+| **Single utility module** | No | Yes |
+| **Plan to distribute as package** | Yes | No |
+| **Quick prototype/script** | No | Yes |
+| **Complex project structure** | Yes | No |
+| **Simple directory structure** | No | Yes |
 
 ## Setting Up Your Project
 
@@ -268,9 +268,63 @@ def calculate_total(items: list[float], tax_rate: float = 0.1) -> float:
 
 ### Deployment Options
 
-- **GitHub Pages** (automated with GitHub Actions)
+#### GitHub Pages (Automated if enables)
+
+**Configurable deployment!** You can easily enable/disable GitHub Pages deployment:
+
+**Quick Toggle Commands:**
+```bash
+# Enable GitHub Pages deployment
+./manage_github_pages.sh enable
+
+# Disable GitHub Pages deployment  
+./manage_github_pages.sh disable
+
+# Check current status
+./manage_github_pages.sh status
+```
+
+**Manual Configuration:**
+Edit `project.toml` to control deployment:
+```toml
+[documentation]
+github_pages_enabled = true  # Set to false to disable
+```
+
+**Setup Steps:**
+1. **Enable GitHub Pages in your repository:**
+   - Go to repository Settings → Pages  
+   - Source: "GitHub Actions"
+   - Save settings
+
+2. **Configure deployment (optional):**
+   ```bash
+   ./manage_github_pages.sh enable  # Enable automatic deployment
+   ```
+
+3. **Push your changes:**
+   ```bash
+   git add .
+   git commit -m "Setup documentation with configurable GitHub Pages"
+   git push origin main
+   ```
+
+4. **Access your docs:**
+   - URL: `https://your-username.github.io/your-repo-name`
+   - Auto-updates when `github_pages_enabled = true`
+   - Deployment skipped when `github_pages_enabled = false`
+
+**Features:**
+- Easy on/off toggle via management script
+- Configuration file (`project.toml`) controls deployment
+- Workflow respects settings and skips deployment when disabled
+- Status checking to see current configuration
+
+**GitHub Actions workflow included:** `.github/workflows/docs.yml`
+
+#### Other Platforms
 - **Netlify** or **Vercel** (connect repository)
-- **Custom server** (static HTML output)
+- **Custom server** (static HTML output with `mkdocs build`)
 
 See the [Documentation Setup Tutorial](docs/tutorials/docs-setup.md) for complete configuration details.
 

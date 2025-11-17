@@ -44,11 +44,11 @@ uv run streamlit run src/demo_sub_app/sub_demo_app.py --server.port 8521
 
 ### Features Demonstrated
 
-- ✅ **Package structure** with `libs/` directory
-- ✅ **Proper `__init__.py`** files for Python packages  
-- ✅ **Reusable modules** organized as packages
-- ✅ **Clean namespace** separation
-- ✅ **Scalable architecture** for larger projects
+- **Package structure** with `libs/` directory
+- **Proper `__init__.py`** files for Python packages  
+- **Reusable modules** organized as packages
+- **Clean namespace** separation
+- **Scalable architecture** for larger projects
 
 ### Code Structure
 
@@ -122,17 +122,17 @@ Perfect for:
 
 Both demos include:
 
-### **Import Testing**
+### Import Testing
 - Verify that module imports work correctly
 - See the difference between import patterns
 - Test function calls and responses
 
-### **Function Examples**
+### Function Examples
 - Real working examples of each function
 - Input/output demonstrations
 - Error handling showcase
 
-### **Learning Opportunities**
+### Learning Opportunities
 - Compare code organization approaches
 - Understand pyproject.toml configuration
 - See practical Python packaging patterns

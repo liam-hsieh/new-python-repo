@@ -33,7 +33,7 @@ packages = ["src/libs"]  # Include entire package
 
 ### When to Use
 
-✅ **Good for:**
+**Good for:**
 
 - Multiple related modules
 - Reusable library code
@@ -41,7 +41,7 @@ packages = ["src/libs"]  # Include entire package
 - Code you plan to distribute as a package
 - Clear namespace separation
 
-❌ **Avoid when:**
+**Avoid when:**
 
 - You have only one simple module
 - Quick prototyping
@@ -119,7 +119,7 @@ packages = ["src/demo_sub_app/example_module2.py"]  # Specific file
 
 ### When to Use
 
-✅ **Good for:**
+**Good for:**
 
 - Single utility modules
 - Simple helper functions
@@ -127,7 +127,7 @@ packages = ["src/demo_sub_app/example_module2.py"]  # Specific file
 - App-specific utilities
 - Small projects
 
-❌ **Avoid when:**
+**Avoid when:**
 
 - You have many related modules
 - Building a reusable library

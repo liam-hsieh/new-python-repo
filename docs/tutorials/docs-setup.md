@@ -230,33 +230,103 @@ for path in sorted(src_dir.rglob("*.py")):
 
 ### GitHub Pages
 
-1. Create `.github/workflows/docs.yml`:
-   ```yaml
-   name: Deploy Documentation
-   
-   on:
-     push:
-       branches: [main]
-   
-   jobs:
-     deploy:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         - uses: actions/setup-python@v4
-           with:
-             python-version: 3.12
-         - run: pip install uv
-         - run: uv sync --extra docs
-         - run: uv run mkdocs build
-         - uses: peaceiris/actions-gh-pages@v3
-           with:
-             github_token: ${{ secrets.GITHUB_TOKEN }}
-             publish_dir: ./site
+**Automated deployment is already configured!** The template includes a GitHub Actions workflow that automatically builds and deploys your documentation.
+
+#### Quick Setup
+
+1. **Enable GitHub Pages:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under **Source**, select "**GitHub Actions**"
+   - Click **Save**
+
+2. **Push your documentation:**
+   ```bash
+   git add .
+   git commit -m "Add documentation setup"
+   git push origin main
    ```
 
-2. Enable GitHub Pages in repository settings
-3. Push to main branch to trigger deployment
+3. **Access your live docs:**
+   - URL: `https://your-username.github.io/your-repo-name`
+   - Usually available within 2-3 minutes after push
+
+#### How It Works
+
+The included `.github/workflows/docs.yml` workflow:
+
+- **Triggers on:** pushes to main branch affecting docs, source code, or config
+- **Installs:** Python 3.12 and uv package manager
+- **Builds:** documentation with `mkdocs build`
+- **Deploys:** to GitHub Pages automatically
+
+#### Workflow Features
+
+```yaml title=".github/workflows/docs.yml"
+name: Deploy Documentation to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'           # Documentation files
+      - 'src/**'            # Source code (for API docs)
+      - 'mkdocs.yml'        # Configuration
+      - 'pyproject.toml'    # Dependencies
+
+permissions:
+  contents: read
+  pages: write              # Required for Pages deployment
+  id-token: write
+```
+
+#### Customizing the Workflow
+
+To modify deployment behavior, edit `.github/workflows/docs.yml`:
+
+**Change trigger branches:**
+```yaml
+on:
+  push:
+    branches: [ main, develop ]  # Add more branches
+```
+
+**Add manual trigger:**
+```yaml
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:             # Enables manual run
+```
+
+**Different Python version:**
+```yaml
+- name: Set up Python
+  uses: actions/setup-python@v4
+  with:
+    python-version: '3.11'      # Change version
+```
+
+#### Troubleshooting
+
+**Build fails?**
+- Check the Actions tab in your GitHub repository
+- Common issues: missing dependencies, broken links, invalid markdown
+
+**Pages not updating?**
+- Ensure GitHub Pages source is set to "GitHub Actions"
+- Check if the workflow is enabled in Actions tab
+- Verify the workflow file is in `.github/workflows/`
+
+**Custom domain?**
+- Add a `CNAME` file to your `docs/` directory with your domain
+- Configure DNS to point to GitHub Pages
+
+#### Monitoring Deployments
+
+- **Actions tab**: See build logs and status
+- **Environments**: View deployment history under repository settings
+- **Commit status**: Green checkmark indicates successful deployment
 
 ### Other Platforms
 

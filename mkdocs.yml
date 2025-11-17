@@ -43,6 +43,7 @@ nav:
     - Demo Sub App: api/demo-sub-app.md
   - Tutorials:
     - Setting Up Documentation: tutorials/docs-setup.md
+    - GitHub Pages Configuration: tutorials/github-pages-config.md
     - Adding New Modules: tutorials/adding-modules.md
 
 plugins:
