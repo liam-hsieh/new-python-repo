@@ -38,13 +38,14 @@ nav:
     - Quick Start: getting-started/quick-start.md
     - Import Patterns: getting-started/import-patterns.md
     - Demo Applications: getting-started/demos.md
+  - Setup Guides:
+    - GitHub Pages Setup: github-pages-setup.md
   - API Reference:
     - Libs Package: api/libs.md
     - Demo Sub App: api/demo-sub-app.md
   - Tutorials:
     - Setting Up Documentation: tutorials/docs-setup.md
     - GitHub Pages Configuration: tutorials/github-pages-config.md
-    - Adding New Modules: tutorials/adding-modules.md
 
 plugins:
   - search
