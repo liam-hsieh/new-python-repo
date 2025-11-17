@@ -18,8 +18,8 @@ def import_checking1(test_str: str) -> str:
         A formatted string confirming successful import with the input string
         
     Example:
-        >>> import_checking1("Hello World")
-        'Import import_checking1 successful, and here is your input: Hello World'
+        >>> import_checking1("Hello World!")
+        'Import import_checking1 successful, and here is your input: Hello World!'
     """
     return f"Import import_checking1 successful, and here is your input: {test_str}"
 

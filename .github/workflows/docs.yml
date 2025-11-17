@@ -12,7 +12,7 @@ on:
       - 'project.toml'
   
   # Allow manual triggering
-  workflow_dispatch:
+  workflow_dispatch: 
 
 # Set permissions for GitHub Pages deployment
 permissions:
