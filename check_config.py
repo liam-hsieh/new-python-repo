@@ -9,7 +9,7 @@ try:
 except ImportError:
     # Python < 3.11
     try:
-        import tomli as tomllib
+        import toml as tomllib
     except ImportError:
         print("Error: tomllib/tomli not available. Please install tomli for Python < 3.11")
         sys.exit(1)
