@@ -1,10 +1,10 @@
 site_name: New Python Repo Template
 site_description: A modern Python project template with uv and best practices
-site_author: Your Name
-site_url: https://your-username.github.io/new-python-repo
+site_author: Liam Hsieh, PhD
+site_url: https://liam-hsieh.github.io/new-python-repo
 
-repo_name: your-username/new-python-repo
-repo_url: https://github.com/your-username/new-python-repo
+repo_name: liam-hsieh/new-python-repo
+repo_url: https://github.com/liam-hsieh/new-python-repo
 
 theme:
   name: material
