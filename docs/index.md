@@ -11,6 +11,7 @@ This template demonstrates:
 - **Two import patterns** for different project structures
 - **Interactive demo applications** built with Streamlit
 - **Professional documentation** with MkDocs + mkdocstrings
+- **Comprehensive logging** following Python best practices
 
 ## Key Features
 
@@ -32,17 +33,26 @@ This template demonstrates:
     - Material Design theme
     - Search functionality
 
+=== "Logging & Debugging"
+    - Hierarchical logger patterns
+    - Module-level and function-level logging
+    - Class-based logging demonstrations
+    - Production-ready configurations
+    - Third-party library suppression
+
 === "Demo Applications"
     - Streamlit web apps
     - Data visualization examples
     - Custom module integration
     - Different import patterns
+    - Comprehensive logging examples
 
 ## Navigation
 
 - **[Getting Started](getting-started/quick-start.md)** - Set up and run your first project
 - **[Import Patterns](getting-started/import-patterns.md)** - Learn different module organization approaches
-- **[Demo Applications](getting-started/demos.md)** - Explore the included examples
+- **[Demo Applications](getting-started/demos.md)** - Explore the included examples with logging
+- **[Logging Guide](tutorials/logging-guide.md)** - Comprehensive logging implementation guide
 - **[API Reference](api/libs.md)** - Auto-generated documentation from code
 - **[Tutorials](tutorials/docs-setup.md)** - Step-by-step guides
 

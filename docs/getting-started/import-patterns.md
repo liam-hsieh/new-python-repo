@@ -4,10 +4,12 @@ Understanding the two import approaches in this template.
 
 ## Overview
 
-This template demonstrates two different approaches to organizing and importing Python modules:
+This template demonstrates two different approaches to organizing and importing Python modules, each with comprehensive logging implementations:
 
-1. **Package-based imports** - Best for reusable libraries
-2. **Direct module imports** - Best for simple utilities
+1. **Package-based imports** - Best for reusable libraries with module-level logging
+2. **Direct module imports** - Best for simple utilities with hierarchical logging
+
+Both patterns include production-ready logging configurations following Python best practices.
 
 ## Package-Based Imports (Demo 1)
 

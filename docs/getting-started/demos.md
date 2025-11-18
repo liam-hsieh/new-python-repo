@@ -4,9 +4,46 @@ Explore the interactive demo applications included in this template.
 
 ## Overview
 
-This template includes two Streamlit demo applications that showcase different Python module import patterns and provide hands-on examples of how to structure your code.
+This template includes two Streamlit demo applications that showcase different Python module import patterns and comprehensive logging implementations. The demos provide hands-on examples of how to structure your code with proper logging practices.
 
-## Running the Demos
+### Logging Architecture
+
+Both demos implement:
+
+- **Module-level logging** configuration
+- **Streamlit-specific** logging setup
+- **Third-party library** log suppression
+- **Function-level tracing** with detailed context
+- **Error handling** with comprehensive logging
+
+See the [Logging Guide](../tutorials/logging-guide.md) for detailed implementation patterns.
+
+## Logging Benefits
+
+Both demos demonstrate production-ready logging that provides:
+
+- **Debugging capabilities** - Trace execution flow and identify issues
+- **Performance monitoring** - Track function execution times and data processing
+- **Error tracking** - Comprehensive error context and stack traces
+- **Operational visibility** - Monitor application behavior in production
+- **Development efficiency** - Quick problem identification and resolution
+
+### Testing Logging
+
+Each module can be run independently to demonstrate logging:
+
+```bash
+# Test package-based module logging
+python src/libs/example_module1.py
+
+# Test direct import module with hierarchical logging
+python src/demo_sub_app/example_module2.py
+
+# Test logging utilities
+python src/libs/logging_utils.py
+```
+
+## Quick Start
 
 ### Using the Demo Script
 
@@ -64,9 +101,21 @@ src/
 
 The demo showcases these functions from `libs.example_module1`:
 
-- `import_checking1()` - Import verification
-- `calculate_sum()` - Mathematical operations  
-- `format_message()` - String formatting utilities
+- `import_checking1()` - Import verification with detailed logging
+- `calculate_sum()` - Mathematical operations with error handling and logging
+
+### Logging Features
+
+- **Module-level logging** with proper logger configuration
+- **Function-level logging** with input/output tracing
+- **Error handling** with detailed logging context
+- **Configurable log levels** for debugging
+
+**View logging output:**
+```bash
+# Run module directly to see logging in action
+python src/libs/example_module1.py
+```
 
 ### When to Use This Pattern
 
@@ -89,7 +138,31 @@ Perfect for:
 - **Simple module structure** 
 - **Quick prototyping** approach
 - **Minimal configuration** needed
-- **Straightforward organization**
+- **Hierarchical logging** with `set_logger_w_obj_name()`
+- **Class-based logging** demonstrations
+- **Advanced text analysis** with logging metrics
+
+### Key Functions
+
+The demo showcases these functions from `example_module2`:
+
+- `import_checking2()` - Direct import verification
+- `process_text()` - Text analysis with detailed logging
+- `validate_input()` - Input validation with warning logs
+- `ExampleClass.example_method()` - Class method logging patterns
+
+### Logging Features
+
+- **Hierarchical logger names** for function and class tracking
+- **Multiple logging approaches** within classes
+- **Input validation logging** with detailed context
+- **Performance metrics** in text processing
+
+**View advanced logging:**
+```bash
+# Run module directly to see hierarchical logging
+python src/demo_sub_app/example_module2.py
+```
 
 ### Code Structure
 

@@ -1,10 +1,35 @@
 # Documentation Setup Tutorial
 
-Learn how to set up and customize MkDocs documentation for your project.
+Learn how to set up and customize MkDocs documentation with hybrid API documentation.
 
 ## Overview
 
-This template uses **MkDocs** with **Material theme** and **mkdocstrings** for automatic API documentation generation from Python docstrings.
+This template uses **MkDocs** with **Material theme** and **mkdocstrings** for automatic API documentation generation from Python docstrings. It implements a **hybrid documentation approach** combining manual curation with automatic generation.
+
+## Documentation Architecture
+
+### Hybrid Approach
+- **Manual Overview Pages**: Curated introductions with examples (`docs/api/*.md`)
+- **Auto-Generated Reference**: Detailed API docs from source code (`docs/api/reference/*`)
+- **Best of Both Worlds**: Context + completeness
+
+### Generated Structure
+```
+docs/
+├── api/
+│   ├── index.md              # Manual API overview
+│   ├── libs.md               # Manual package overview  
+│   ├── demo-sub-app.md       # Manual module overview
+│   └── reference/            # Auto-generated detailed docs
+│       ├── index.md          # Auto-generated index
+│       ├── libs/
+│       │   ├── example_module1.md
+│       │   └── logging_utils.md
+│       └── demo_sub_app/
+│           ├── sub_demo_app.md
+│           └── example_module2.md
+└── gen_ref_pages.py          # Auto-generation script
+```
 
 ## Installation
 

@@ -41,11 +41,22 @@ nav:
   - Setup Guides:
     - GitHub Pages Setup: github-pages-setup.md
   - API Reference:
+    - Overview: api/index.md
     - Libs Package: api/libs.md
     - Demo Sub App: api/demo-sub-app.md
+    - Detailed Reference:
+      - Auto-Generated Index: api/reference/index.md
+      - Libs:
+        - Example Module 1: api/reference/libs/example_module1.md
+        - Logging Utils: api/reference/libs/logging_utils.md
+      - Demo Apps:
+        - Main Demo App: api/reference/demo_app.md
+        - Sub Demo App: api/reference/demo_sub_app/sub_demo_app.md
+        - Example Module 2: api/reference/demo_sub_app/example_module2.md
   - Tutorials:
     - Setting Up Documentation: tutorials/docs-setup.md
     - GitHub Pages Configuration: tutorials/github-pages-config.md
+    - Logging Guide: tutorials/logging-guide.md
 
 plugins:
   - search

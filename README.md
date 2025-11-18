@@ -540,6 +540,126 @@ conda list --export > conda-deps.txt
 - [Python packaging guide](https://packaging.python.org/)
 - [pyproject.toml reference](https://pep.python.org/pep-0621/)
 
+## Logging Setup
+
+This template implements a comprehensive logging system following Python logging best practices with a **hierarchical logger pattern**. 
+
+### Architecture Overview
+
+```
+new_python_repo                    # Root package logger
+├── new_python_repo.libs          # Package modules
+├── new_python_repo.demo_app       # Demo applications
+└── new_python_repo.logging_utils  # Logging utilities
+```
+
+**Key Principle**: Modules define loggers but never configure handlers/levels - configuration happens at entry points only.
+
+### Module-Level Logging Pattern
+
+All `.py` files follow this standard setup:
+
+```python
+import logging
+
+# Configure module-level logger - NO handlers, NO setLevel
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())
+
+def my_function():
+    logger.info("Function executed successfully")
+    logger.debug("Detailed debug information")
+```
+
+### Entry Point Configuration
+
+**For Streamlit apps** (already configured in demo apps):
+```python
+# Configure logging for Streamlit app (only if not already configured)
+if not logging.getLogger().handlers:
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[logging.StreamHandler()]
+    )
+    
+    # Set levels for different components
+    logging.getLogger('new_python_repo').setLevel(logging.INFO)
+    logging.getLogger('streamlit').setLevel(logging.WARNING)
+```
+
+**For module testing** (included in all modules):
+```python
+if __name__ == "__main__":
+    import sys
+    import logging
+    
+    # Test-specific logging (terminal only, configurable level)
+    logging.basicConfig(
+        level=logging.DEBUG,  # Change to INFO/WARNING as needed
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[logging.StreamHandler(sys.stdout)],
+        force=True
+    )
+```
+
+### Advanced Logging Utilities
+
+The template includes `src/libs/logging_utils.py` with enhanced functionality:
+
+```python
+from libs.logging_utils import set_logger_w_obj_name, setup_development_logging
+
+# Function-level hierarchical logging
+def process_data(data):
+    logger = set_logger_w_obj_name()  # Creates: 'module.function_name'
+    logger.info("Processing data")
+
+# Class method hierarchical logging  
+class AnalyticsEngine:
+    def run_query(self, query):
+        logger = set_logger_w_obj_name()  # Creates: 'module.ClassName.method_name'
+        logger.info("Running query")
+
+# Quick development setup
+setup_development_logging(level=logging.DEBUG)
+```
+
+### Testing the Logging System
+
+Test individual modules with built-in logging:
+```bash
+# Test package module with hierarchical logging
+python src/libs/example_module1.py
+
+# Test direct import module with validation logging  
+python src/demo_sub_app/example_module2.py
+
+# Test logging utilities
+python src/libs/logging_utils.py
+
+# Test configuration script with verbose logging
+python check_config.py --verbose
+```
+
+### When to Use Each Approach
+
+| Context | Use Module Logger | Use Hierarchical Logger |
+|---------|------------------|------------------------|
+| **General operations** | `logger = logging.getLogger(__name__)` | No |
+| **Granular debugging** | No | `logger = set_logger_w_obj_name()` |
+| **Complex workflows** | No | Yes |
+| **Function-level tracing** | No | Yes |
+| **Performance monitoring** | Yes | Yes |
+
+### Benefits of This Approach
+
+- **Clean separation**: Modules stay configuration-agnostic
+- **Flexible control**: Entry points control logging behavior  
+- **Hierarchical tracking**: Detailed function/method-level tracing
+- **Production ready**: Proper log levels and third-party suppression
+- **Development friendly**: Easy debugging with detailed output
+
 ---
 
 **Happy coding!** 
