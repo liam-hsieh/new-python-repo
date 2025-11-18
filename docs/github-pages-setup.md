@@ -16,7 +16,7 @@ Follow these simple steps to deploy your documentation to GitHub Pages.
 4. **Under "Source"**, select **"GitHub Actions"**
 5. **Click "Save"**
 
-![GitHub Pages Settings](https://docs.github.com/assets/cb-20515/images/help/pages/publishing-source-github-actions.png)
+[GitHub Pages Settings](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
 ## Step 2: Trigger First Deployment
 
