@@ -6,12 +6,14 @@ including hierarchical logger name generation for function-level tracing.
 
 import inspect
 import logging
+from typing import Optional, Union
+from pathlib import Path
 
 # Configure module-level logger - NO handlers, NO setLevel
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
-def set_logger_w_obj_name(eliminate_init=False):
+def set_logger_w_obj_name(eliminate_init: bool = False) -> logging.Logger:
     """
     Generate a hierarchical logger name based on the calling function/method.
     
@@ -61,7 +63,7 @@ def set_logger_w_obj_name(eliminate_init=False):
     logger.debug(f"Generated hierarchical logger name: {logger_name}")
     return logging.getLogger(logger_name)
 
-def setup_development_logging(level=logging.INFO, include_timestamp=True):
+def setup_development_logging(level: int = logging.INFO, include_timestamp: bool = True) -> None:
     """
     Setup logging configuration for development/testing environments.
     
@@ -95,7 +97,7 @@ def setup_development_logging(level=logging.INFO, include_timestamp=True):
     
     logger.info(f"Development logging configured at {logging.getLevelName(level)} level")
 
-def setup_production_logging(log_file_path, level=logging.INFO):
+def setup_production_logging(log_file_path: Union[str, Path], level: int = logging.INFO) -> None:
     """
     Setup logging configuration for production environments.
     
@@ -110,7 +112,6 @@ def setup_production_logging(log_file_path, level=logging.INFO):
         >>> setup_production_logging("/var/log/app/service.log")
         >>> # Logs will go to both file and console
     """
-    from pathlib import Path
     import sys
     
     # Ensure log directory exists
